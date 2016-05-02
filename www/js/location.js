@@ -1,0 +1,89 @@
+function distance(lat1, lon1, lat2, lon2, unit) {
+        var radlat1 = Math.PI * lat1/180
+        var radlat2 = Math.PI * lat2/180
+        var radlon1 = Math.PI * lon1/180
+        var radlon2 = Math.PI * lon2/180
+        var theta = lon1-lon2
+        var radtheta = Math.PI * theta/180
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist)
+        dist = dist * 180/Math.PI
+        dist = dist * 60 * 1.1515
+        if (unit=="K") { dist = dist * 1.609344 }
+        if (unit=="N") { dist = dist * 0.8684 }
+        return dist;
+}
+
+function drivingStart(){
+    console.log('in driving');
+
+    function onSuccess(position) {
+
+        current.lat  = position.coords.latitude;
+               current.lat  = current.lat.toFixed(6);
+               current.long   = position.coords.longitude;
+               current.long  = current.long.toFixed(6);
+
+    //    var element = document.getElementById('info');
+    //    element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+    //                        'Longitude: ' + position.coords.longitude     + '<br />' +
+    //                        '<hr />'      + element.innerHTML;
+
+    $.each( locations, function( key, value ) {
+        var dis = distance(current.lat,current.long,value.lat,value.long,'K');
+            if (dis < maxDistance && value.passed == null && playing == 0) { //binnen bereik en is nog niet gebruikt
+                console.log(key);
+                        playing = 1;
+                        value.sound.play();
+                        value.passed = 1;
+                        setTimeout(function(){
+                            playing = 0;
+                            console.log('in');
+                        }, value.duration);
+            }
+        });
+   }
+
+   // onError Callback receives a PositionError object
+   //
+   function onError(error) {
+       alert('code: '    + error.code    + '\n' +
+             'message: ' + error.message + '\n');
+   }
+
+   // Options: throw an error if no update is received every 30 seconds.
+   //
+ watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000, enableHighAccuracy: true  });
+
+}
+
+
+// function onSuccess(position) {
+//         current.lat  = position.coords.latitude;
+//         current.lat  = current.lat.toFixed(6);
+//         current.long   = position.coords.longitude;
+//         current.long  = current.long.toFixed(6);
+//
+//     $.each( locations, function( key, value ) {
+//         var dis = distance(current.lat,current.long,value.lat,value.long,'K');
+//         if (dis < maxDistance && value.sound.passed == null && playing == 0) { //binnen bereik en is nog niet gebruikt
+//             playing = 1;
+//             value.sound.media.play()
+//             value.sound.passed = 1;
+//             setTimeOut(function{
+//                     playing = 0;
+//                 }, value.sound.duration);
+//         }
+//     });
+// }
+//
+// // onError Callback receives a PositionError object
+// //
+// function onError(error) {
+//     alert('code: '    + error.code    + '\n' +
+//           'message: ' + error.message + '\n');
+// }
+//
+// // Options: throw an error if no update is received every 30 seconds.
+// //
+// watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000, enableHighAccuracy: true });
