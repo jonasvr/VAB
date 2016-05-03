@@ -39,7 +39,7 @@ var app = {
         console.log('press start');
         $("#play").click(function(){
             drivingStart();
-            $("#info").html("Started");
+            // $("#info").html("Started");
         });
         $("#stop").click(function(){
             console.log('stop');
