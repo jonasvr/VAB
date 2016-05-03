@@ -27,12 +27,12 @@
   <plugin name="cordova-plugin-whitelist" source="npm"/>
   <icon src="www/icon.png"/>
   <platform name="android">
-    <icon src="res/icon/android/drawable-ldpi-icon.png" density="ldpi"/>
-    <icon src="res/icon/android/drawable-mdpi-icon.png" density="mdpi"/>
-    <icon src="res/icon/android/drawable-hdpi-icon.png" density="hdpi"/>
-    <icon src="res/icon/android/drawable-xhdpi-icon.png" density="xhdpi"/>
-    <icon src="res/icon/android/drawable-xxhdpi-icon.png" density="xxhdpi"/>
-    <icon src="res/icon/android/drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
+    <icon src="res/icons/android/icon-36-ldpi.png" density="ldpi"/>
+    <icon src="res/icons/android/icon-48-mdpi.png" density="mdpi"/>
+    <icon src="res/icons/android/icon-72-hdpi.png" density="hdpi"/>
+    <icon src="res/icons/android/icon-96-xhdpi.png" density="xhdpi"/>
+    <icon src="res/icons/android/icon-144-xxhdpi.png" density="xxhdpi"/>
+    <icon src="res/icons/android/icon-192-xxxhdpi.png" density="xxxhdpi"/>
     <splash src="res/screen/android/drawable-land-ldpi-screen.png" density="land-ldpi"/>
     <splash src="res/screen/android/drawable-land-mdpi-screen.png" density="land-mdpi"/>
     <splash src="res/screen/android/drawable-land-hdpi-screen.png" density="land-hdpi"/>
