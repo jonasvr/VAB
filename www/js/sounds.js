@@ -6,7 +6,7 @@ function loadSounds(){
     locations.punt2.duration = 3500;
 
     locations.punt3.sound = new Media("punt3.mp3",onSucces,onError);
-    locations.punt3.duration = 5500;
+    locations.punt3.duration = 3500;
 
     locations.punt4.sound = new Media("punt4.mp3",onSucces,onError);
     locations.punt4.duration = 6500;
