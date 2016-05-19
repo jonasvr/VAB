@@ -17,7 +17,11 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 function drivingStart(){
     console.log('in driving');
 
+    //setup map
     getMapLocation();
+    //watch map
+    watchMapPosition();
+
     $('.content-container').addClass('top');
     $('.map-container').show();
 
@@ -118,6 +122,9 @@ var onMapSuccess = function (position) {
 
     getMap(Latitude, Longitude);
 
+
+    
+
 }
 
 // Get map by using coordinates
@@ -137,6 +144,20 @@ function getMap(latitude, longitude) {
 
     var latLong = new google.maps.LatLng(latitude, longitude);
 
+    marker = new google.maps.Marker({
+        position: latLong
+    });
+
+    marker.setMap(map);
+    map.setZoom(15);
+    map.setCenter(marker.getPosition());
+
+}
+
+function updateMap(latitude, longitude) {
+  console.log('getMap: '+ latitude +','+ longitude);
+
+    var latLong = new google.maps.LatLng(latitude, longitude);
     var marker = new google.maps.Marker({
         position: latLong
     });
@@ -144,7 +165,9 @@ function getMap(latitude, longitude) {
     marker.setMap(map);
     map.setZoom(15);
     map.setCenter(marker.getPosition());
+
 }
+
 
 // Success callback for watching your changing position
 
@@ -159,14 +182,14 @@ var onMapWatchSuccess = function (position) {
         Latitude = updatedLatitude;
         Longitude = updatedLongitude;
 
-        getMap(updatedLatitude, updatedLongitude);
+        updateMap(updatedLatitude, updatedLongitude);
     }
 }
 
 // Error callback
 
 function onMapError(error) {
-    console.log('code: ' + error.code + '\n' +
+    alert('code: ' + error.code + '\n' +
         'message: ' + error.message + '\n');
 }
 

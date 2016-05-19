@@ -21,3 +21,4 @@ var playing = 0;
 
 var Latitude = undefined;
 var Longitude = undefined;
+var map,marker;
