@@ -62,12 +62,18 @@ var app = {
 
 function start(){
     console.log('in start');
+    playing = 0;
     driving();
 }
 function stopDriving(){
-    current = {lat:null,long:null};
+    console.log('stopDriving');
+    
+
     $.each( locations, function( key, value ) {
         value.passed = null;
+        value.sound.stop(); 
     });
+    playing = 1;
+    current = {lat:null,long:null};
     navigator.geolocation.clearWatch(watchID);
 }

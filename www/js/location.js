@@ -38,13 +38,13 @@ function drivingStart(){
         var dis = distance(current.lat,current.long,value.lat,value.long,'K');
             if (dis < maxDistance && value.passed == null && playing == 0) { //binnen bereik en is nog niet gebruikt
                 console.log(key);
-                        playing = 1;
-                        value.sound.play();
-                        value.passed = 1;
-                        setTimeout(function(){
-                            playing = 0;
-                            console.log('in');
-                        }, value.duration);
+                playing = 1;
+                value.sound.play();
+                value.passed = 1; 
+                setTimeout(function(){
+                    playing = 0;
+                    console.log('timeout: '+ key);
+                }, value.duration);
             }
         });
    }
