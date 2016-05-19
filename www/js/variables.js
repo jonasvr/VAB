@@ -18,3 +18,6 @@ var maxDistance = 0.2 // => in km
 var watchID = null;
 
 var playing = 0;
+
+var Latitude = undefined;
+var Longitude = undefined;

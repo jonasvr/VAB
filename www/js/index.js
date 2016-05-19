@@ -65,6 +65,7 @@ function start(){
     driving();
 }
 function stopDriving(){
+    current = {lat:null,long:null};
     $.each( locations, function( key, value ) {
         value.passed = null;
     });
