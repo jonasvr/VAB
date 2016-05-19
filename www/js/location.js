@@ -158,13 +158,8 @@ function updateMap(latitude, longitude) {
   console.log('getMap: '+ latitude +','+ longitude);
 
     var latLong = new google.maps.LatLng(latitude, longitude);
-    var marker = new google.maps.Marker({
-        position: latLong
-    });
-
-    marker.setMap(map);
-    map.setZoom(15);
-    map.setCenter(marker.getPosition());
+    marker.setPosition( latLong );
+    map.panTo( latLong );
 
 }
 
