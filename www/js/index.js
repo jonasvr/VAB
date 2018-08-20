@@ -39,7 +39,7 @@ var app = {
     onDeviceReady: function() {
         console.log('onDeviceReady')
         app.receivedEvent('deviceready');
-        loadSounds();
+        // loadSounds();
         // drivingStart();
         console.log('press start');
         $("#play").click(function(){
