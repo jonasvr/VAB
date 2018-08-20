@@ -20,7 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         console.log('intitialize')
-        bindEvents();
+        this.bindEvents();
         
     },
     // Bind Event Listeners
@@ -30,7 +30,7 @@ var app = {
     bindEvents: function() {
         console.log('bindEvents')
         // document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener("deviceready", onDeviceReady, false);
+        document.addEventListener("deviceready", this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
